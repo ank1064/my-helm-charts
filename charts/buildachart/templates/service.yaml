@@ -12,5 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-     - app.kubernetes.io/name: buildachart
-       app.kubernetes.io/instance: release-e4102bf387177d27af57c241dafbf2d76ff200e2
+     {{- include "buildachart.selectorLabels" . | nindent 4 }}
