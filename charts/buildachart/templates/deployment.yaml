@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: {{ include "buildachart.fullname" . }}
   labels:
-    env: dev 
+    {{- include "buildachart.labels" . | nindent 4 }} 
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      env: dev
+      {{- include "buildachart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        env: dev
+        {{- include "buildachart.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
