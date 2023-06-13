@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "buildachart.fullname" . }}
   labels:
-    {{- include "buildachart.labels" . | nindent 4 }}
+    {{- include "buildachart.labels" . | nindent 4 }}-test"
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-     {{- include "buildachart.selectorLabels" . | nindent 4 }}
+     {{- include "buildachart.selectorLabels" . | nindent 4 }}-test"
