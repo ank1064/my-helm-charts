@@ -17,7 +17,7 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "buildachart.labels" . | nindent 4 }}
+    {{- include "buildachart.labels" . | nindent 4 }}-test"
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
