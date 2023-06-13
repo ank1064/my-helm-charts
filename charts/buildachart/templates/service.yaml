@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "buildachart.fullname" . }}
   labels:
-    env: dev
+    {{- include "buildachart.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-     env: dev
+     {{- include "buildachart.selectorLabels" . | nindent 4 }}
